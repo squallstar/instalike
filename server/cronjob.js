@@ -1,14 +1,14 @@
 SyncedCron.add({
-  name: 'Worker to like pictures in background',
+  name: 'Process user jobs',
   schedule: function(parser) {
-    return parser.text('every 2 minutes');
+    return parser.text('every 30 minutes');
   },
   job: function() {
     var users = Meteor.users.find({
       job: { $ne: null }
     }).fetch();
 
-    console.log('parsing jobs for', users.length, 'users');
+    console.log('Parsing jobs for', users.length, 'users');
 
     users.forEach(function (user) {
       var job = user.job;
@@ -20,7 +20,7 @@ SyncedCron.add({
 
       console.log('found', found, 'pics');
 
-      Instagram.likeAllMedias({
+      var liked = Instagram.likeAllMedias({
         userId: user._id
       });
     });

@@ -9,6 +9,6 @@ Meteor.publish('medias', function () {
 Meteor.publish('userData', function () {
   return Meteor.users.find(
     { _id: this.userId },
-    { fields: { job: 1 }
+    { fields: { job: 1, liked: 1 }
   });
 });

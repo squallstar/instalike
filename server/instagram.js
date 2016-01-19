@@ -9,17 +9,34 @@ Instagram = {};
 /* --------------------------------------------------- */
 
 Instagram.likeAllMedias = function (options) {
+  var liked = 0;
+
   var pics = Media.find({
     user: options.userId
   }, {
     sort: { created_time: -1 }
   }).fetch();
 
+  if (!pics.length) {
+    return 0;
+  }
+
   pics.forEach(function (pic) {
     if (wrapperLikeMedia(pic)) {
+      liked++;
       Media.remove(pic.id);
     }
   });
+
+  console.log('Liked', liked, 'pics of', pics.length);
+
+  Meteor.users.update({ _id: options.userId }, {
+    $inc: {
+      liked: liked
+    }
+  });
+
+  return liked;
 };
 
 /* --------------------------------------------------- */
@@ -70,16 +87,6 @@ function likeMedia (pic, next) {
   });
 
   ig.add_like(pic.instagram_id, function (err, remaining, limit) {
-    if (err) {
-      switch (err.type) {
-        case 'OAuthRateLimitException':
-          return false;
-        default:
-          return true;
-      }
-    }
-
-    next(null, true);
   });
 }
 
@@ -143,6 +150,9 @@ Meteor.methods({
     Instagram.likeAllMedias({
       userId: Meteor.userId()
     });
+  },
+  removeMedia: function (id) {
+    return Media.remove(id);
   },
   saveQueryAsJob: function (options) {
     Meteor.users.update(Meteor.userId(), {
