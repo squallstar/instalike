@@ -14,4 +14,4 @@ Simple *Meteor-powered* webapp to search for Instagram pics by hashtag and min/m
 meteor --settings settings.json
 ```
 
-and open http://localhost:3000
+and open [http://localhost:3000](http://localhost:3000)
