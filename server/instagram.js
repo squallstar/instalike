@@ -87,6 +87,7 @@ function likeMedia (pic, next) {
   });
 
   ig.add_like(pic.instagram_id, function (err, remaining, limit) {
+    next(null, !err);
   });
 }
 
