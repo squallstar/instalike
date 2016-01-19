@@ -5,3 +5,10 @@ Meteor.publish('medias', function () {
     user: this.userId
   });
 });
+
+Meteor.publish('userData', function () {
+  return Meteor.users.find(
+    { _id: this.userId },
+    { fields: { job: 1 }
+  });
+});

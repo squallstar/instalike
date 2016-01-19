@@ -4,10 +4,11 @@ Template.medias.helpers({
       sort: { created_time: -1 }
     });
   }
-})
+});
 
 Template.medias.onCreated(function () {
   this.subscribe('medias');
+  this.subscribe('userData');
 });
 
 Template.medias.events({

@@ -5,6 +5,9 @@
     </form>
   {{/if}}
   <hr />
+  {{#if currentUser.job}}
+    {{> job currentUser.job}}
+  {{/if}}
   <ul class="medias">
     {{#each medias}}
       {{> media}}
