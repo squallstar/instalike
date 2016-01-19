@@ -1,0 +1,13 @@
+<template name="medias">
+  {{#if medias}}
+    <form name="like-all">
+      <button>Like all</button>
+    </form>
+  {{/if}}
+  <hr />
+  <ul class="medias">
+    {{#each medias}}
+      {{> media}}
+    {{/each}}
+  </ul>
+</template>

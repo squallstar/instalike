@@ -1,0 +1,17 @@
+.medias {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+
+  li {
+    padding: 20px;
+    border: 1px solid #AAA;
+    margin: 1px;
+  }
+}
+
+input[type="number"] {
+  width: 80px;
+}

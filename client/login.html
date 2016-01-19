@@ -1,0 +1,9 @@
+<template name="login">
+  {{#unless currentUser}}
+    <button data-login>Login</button>
+  {{else}}
+    <p>{{currentUser.profile.name}}</p>
+    <button data-logout>Logout</button>
+  {{/unless}}
+  <hr />
+</template>

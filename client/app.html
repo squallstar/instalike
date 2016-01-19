@@ -1,0 +1,9 @@
+<body>
+  {{> login}}
+
+  {{#if currentUser}}
+    {{> search}}
+    <hr />
+    {{> medias}}
+  {{/if}}
+</body>
