@@ -1,4 +1,7 @@
 Template.medias.helpers({
+  mediasCount: function () {
+    return Media.find().count();
+  },
   medias: function () {
     return Media.find({}, {
       sort: { created_time: -1 }
@@ -21,5 +24,9 @@ Template.medias.events({
         alert(err);
       }
     });
+  },
+  'click [data-clear-all]': function (event) {
+    event.preventDefault();
+    Meteor.call('clearMedias');
   }
 })

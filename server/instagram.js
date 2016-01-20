@@ -152,6 +152,9 @@ Meteor.methods({
       userId: Meteor.userId()
     });
   },
+  clearMedias: function () {
+    return Media.remove({ user: Meteor.userId() });
+  },
   removeMedia: function (id) {
     return Media.remove(id);
   },

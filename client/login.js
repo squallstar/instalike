@@ -14,7 +14,7 @@ Template.login.events({
     Meteor.logout();
   },
   'click [data-update-token]': function (event) {
-    var token = prompt('Please type your new Access Token.\r\n\r\nYou can get a token here:\r\nhttps://elfsight.com/service/get-instagram-access-token/', '');
+    var token = prompt('Please type your new Access Token.\r\n\r\nYou can get a token here:\r\nhttps://apigee.com/console/instagram', '');
 
     if (!token) {
       return;
