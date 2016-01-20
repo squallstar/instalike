@@ -4,7 +4,10 @@ Simple *Meteor-powered* webapp to search for Instagram pics by hashtag and min/m
 
 ![Preview](https://cloud.githubusercontent.com/assets/574210/12422147/55375768-bebd-11e5-9706-61f90c0d807d.png)
 
-**Please note**: due to rate limit on the Instagram APIs, you can only like up to 30 pics per hour.
+## Notes
+
+1) Due to rate limit on the Instagram APIs, you can only like up to 30 pics per hour.
+2) If your client is in Sandbox mode, the generated access tokens will not be able to access public content.
 
 ## Run
 

@@ -3,7 +3,7 @@ Template.login.events({
     event.preventDefault();
 
     Meteor.loginWithInstagram({
-      requestPermissions: ['public_content', 'likes', 'comments', 'basic']
+      requestPermissions: ['public_content', 'likes', 'basic']
     }, function (err, res) {
 
     });
@@ -12,5 +12,14 @@ Template.login.events({
     event.preventDefault();
 
     Meteor.logout();
+  },
+  'click [data-update-token]': function (event) {
+    var token = prompt('Please type your new Access Token.\r\n\r\nYou can get a token here:\r\nhttps://elfsight.com/service/get-instagram-access-token/', '');
+
+    if (!token) {
+      return;
+    }
+
+    Meteor.call('updateUserAccessToken', token);
   }
 })

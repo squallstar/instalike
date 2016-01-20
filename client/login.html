@@ -1,9 +1,10 @@
 <template name="login">
   {{#unless currentUser}}
-    <button data-login>Login</button>
+    <button data-login>Login with Instagram</button>
   {{else}}
     <p>{{currentUser.profile.name}}</p>
     <button data-logout>Logout</button>
+    <button data-update-token>Update Access Token</button>
   {{/unless}}
   <hr />
 </template>

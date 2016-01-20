@@ -83,7 +83,7 @@ function likeMedia (pic, next) {
       user = Meteor.users.findOne(pic.user);
 
   ig.use({
-    access_token: Meteor.settings.instagram.accessToken || user.services.instagram.accessToken
+    access_token: user.services.instagram.accessToken
   });
 
   ig.add_like(pic.instagram_id, function (err, remaining, limit) {
@@ -104,7 +104,7 @@ function getPics (options, next) {
       attrs = {};
 
   ig.use({
-    access_token: Meteor.settings.instagram.accessToken || Meteor.users.findOne(userId).services.instagram.accessToken
+    access_token: Meteor.users.findOne(userId).services.instagram.accessToken
   });
 
   ig.tag_media_recent(options.query, options, function (err, medias, pagination, remaining, limit) {
@@ -166,6 +166,13 @@ Meteor.methods({
     Meteor.users.update(Meteor.userId(), {
       $set: {
         job: null
+      }
+    });
+  },
+  updateUserAccessToken: function (token) {
+    Meteor.users.update(Meteor.userId(), {
+      $set: {
+        'services.instagram.accessToken': token
       }
     });
   }
