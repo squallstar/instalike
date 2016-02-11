@@ -86,7 +86,10 @@ function likeMedia (pic, next) {
     access_token: user.instagramAccessToken || user.services.instagram.accessToken
   });
 
-  ig.add_like(pic.instagram_id, function (err, remaining, limit) {
+  ig.add_like(pic.instagram_id, function (err) {
+    if (err) {
+      console.log('Cannot like pic', err.error_type)
+    }
     next(null, !err);
   });
 }
