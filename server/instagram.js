@@ -88,7 +88,7 @@ function likeMedia (pic, next) {
 
   ig.add_like(pic.instagram_id, function (err) {
     if (err) {
-      console.log('Cannot like pic', err.error_type)
+      console.log('Cannot like pic', err.error_type);
     }
     next(null, !err);
   });

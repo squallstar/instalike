@@ -3,6 +3,8 @@ Meteor.publish('medias', function () {
 
   return Media.find({
     user: this.userId
+  }, {
+    limit: 200
   });
 });
 
